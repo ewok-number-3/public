@@ -7,7 +7,7 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Install-Module -Name Az.DesktopVirtualization -RequiredVersion 2.1.0 -force
 Install-Module -Name Az -force
 #Choco install and Choco Apps
-iex ((New-Object System.Net.WebClient).DownloadString('httpschocolatey.orginstall.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.orginstall.ps1'))
 choco install googlechrome -y
 choco install putty -y
 choco install notepadplusplus -y

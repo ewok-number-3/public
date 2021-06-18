@@ -7,6 +7,7 @@ param (
     [String]
     $DomainFQDN
 )
+start-sleep -Seconds 180
 $DomainNB = $DomainFQDN.Split(".")[0]
 $password = ConvertTo-SecureString $DomainPass -AsPlainText -Force
 Import-Module ADDSDeployment

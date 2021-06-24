@@ -7,7 +7,7 @@ param (
     $DomainPass,
     [Parameter()]
     [String]
-    $DomainFQDN
+    $DomainFQDN,
     [Parameter()]
     [String]
     $DomainUserName

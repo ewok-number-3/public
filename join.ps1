@@ -16,7 +16,7 @@ param (
 $DomainNB = $DomainFQDN.Split(".")[0]
 $password = ConvertTo-SecureString $DomainPass -AsPlainText -Force
 $credental = New-Object System.Management.Automation.PSCredential($DomainUserName,$password)
-Add-Computer -DomainName $DomainFQDN -Credential $credental
+Add-Computer -DomainName $DomainFQDN -Credential $credental -Restart
 
 
 #Install-ADDSDomainController'

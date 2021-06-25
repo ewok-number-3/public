@@ -10,12 +10,23 @@ param (
     $DomainFQDN,
     [Parameter()]
     [String]
-    $DomainUserName
+    $DomainUserName,
+    [Parameter()]
+    [String]
+    $DomainController
 )
 
 $DomainNB = $DomainFQDN.Split(".")[0]
 $password = ConvertTo-SecureString $DomainPass -AsPlainText -Force
 $credental = New-Object System.Management.Automation.PSCredential($DomainUserName,$password)
+
+do
+{
+ $test = (Test-NetConnection -ComputerName $DomainController)
+
+}
+while ($test.PingSucceeded -eq $False)
+
 Add-Computer -DomainName $DomainFQDN -Credential $credental -Restart
 
 

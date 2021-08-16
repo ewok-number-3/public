@@ -32,9 +32,10 @@ while ($test.PingSucceeded -eq $False)
 Install-ADDSDomainController'
 -NoGlobalCatalog:$True
 -CreateDnsDelegation:$false
+-Credential:$credental
 -CriticalReplicationOnly:$false
 -DatabasePath "E:\Data"
--DomainName $DomainFQDN
+-DomainName:$DomainFQDN
 -InstallDns:$true
 -LogPath "E:\Logs"
 -NoRebootOnCompletion:$false

@@ -29,16 +29,15 @@ while ($test.PingSucceeded -eq $False)
 
 #Add-Computer -DomainName $DomainFQDN -Credential $credental -Restart
 
-
-#Install-ADDSDomainController'
-#-NoGlobalCatalog:$True
-#-CreateDnsDelegation:$false
-#-CriticalReplicationOnly:$false
-#-DatabasePath "E:\Data"
-#-DomainName $DomainFQDN
-#-InstallDns:$true
-#-LogPath "E:\Logs"
-#-NoRebootOnCompletion:$true
-#-SiteName “Default-First-Site-Name”
-#-SysvolPath "E:\SYSVOL"
-#-Force:$true
+Install-ADDSDomainController'
+-NoGlobalCatalog:$True
+-CreateDnsDelegation:$false
+-CriticalReplicationOnly:$false
+-DatabasePath "E:\Data"
+-DomainName $DomainFQDN
+-InstallDns:$true
+-LogPath "E:\Logs"
+-NoRebootOnCompletion:$false
+-SiteName “Default-First-Site-Name”
+-SysvolPath "E:\SYSVOL"
+-Force:$true

@@ -43,5 +43,5 @@ Install-ADDSDomainController `
 -NoRebootOnCompletion:$false `
 -SiteName "Default-First-Site-Name" `
 -SysvolPath "E:\SYSVOL" `
--SafeModeAdministratorPassword: $DomainPass
+-SafeModeAdministratorPassword:$password `
 -Force:$true

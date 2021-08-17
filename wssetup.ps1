@@ -1,3 +1,11 @@
+
+do
+{
+ $test = (Test-NetConnection www.google.com)
+
+}
+while ($test.PingSucceeded -eq $False)
+
 #Set Execution Policy to allow script to run
 Set-ExecutionPolicy Bypass -Scope Process -Force
 #Set PowerShel to use TLS 1.2

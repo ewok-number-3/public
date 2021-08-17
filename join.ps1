@@ -20,6 +20,8 @@ $DomainNB = $DomainFQDN.Split(".")[0]
 $password = ConvertTo-SecureString $DomainPass -AsPlainText -Force
 $credental = New-Object System.Management.Automation.PSCredential($DomainUserName,$password)
 
+Import-Module ADDSDeployment
+
 do
 {
  $test = (Test-NetConnection -ComputerName $DomainController)

@@ -24,7 +24,7 @@ Import-Module ADDSDeployment
 
 do
 {
- $test = (Test-NetConnection -ComputerName $DomainController)
+ $test = (Test-NetConnection -ComputerName "$($DomainController).$($DomainFQDN)")
 
 }
 while ($test.PingSucceeded -eq $False)

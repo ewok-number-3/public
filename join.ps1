@@ -41,7 +41,7 @@ Install-ADDSDomainController `
 -InstallDns:$true `
 -LogPath "E:\Logs" `
 -NoRebootOnCompletion:$false `
--SiteName “Default-First-Site-Name” `
+-SiteName "Default-First-Site-Name" `
 -SysvolPath "E:\SYSVOL" `
 -SafeModeAdministratorPassword: $DomainPass
 -Force:$true

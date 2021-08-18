@@ -17,8 +17,8 @@ param (
 )
 
 $DomainNB = $DomainFQDN.Split(".")[0]
-$password = ConvertTo-SecureString $DomainPass -AsPlainText -Force
-$credental = New-Object System.Management.Automation.PSCredential("$($DomainUserName)@$($DomainFQDN)",$password)
+$password = ConvertTo-SecureString "$($DomainPass)" -AsPlainText -Force
+$credental = New-Object System.Management.Automation.PSCredential("$($DomainUserName)@$($DomainFQDN)","$($password)")
 
 Import-Module ADDSDeployment
 
@@ -43,5 +43,5 @@ Install-ADDSDomainController `
 -NoRebootOnCompletion:$false `
 -SiteName "Default-First-Site-Name" `
 -SysvolPath "E:\SYSVOL" `
--SafeModeAdministratorPassword:$password `
+-SafeModeAdministratorPassword:"$($password)" `
 -Force:$true

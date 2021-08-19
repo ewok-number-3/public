@@ -25,14 +25,14 @@ else
  New-Item $MSSvrLog 
  }
  
-Add-content $MSSvrLog "Write parameters coming from the script $(DomainPass), $(DomainFQDN), $(DomainUserName), $(DomainController), at the following date/time  $(Get-Date)"
+Add-content $MSSvrLog "Write parameters coming from the script $($DomainPass), $($DomainFQDN), $($DomainUserName), $($DomainController), at the following date/time  $(Get-Date)"
 
 $User = "$($DomainFQDN)\$($DomainUserName)"
 $DomainNB = $DomainFQDN.Split(".")[0]
 $password = ConvertTo-SecureString "$($DomainPass)" -AsPlainText -Force
 $credental = New-Object System.Management.Automation.PSCredential $User,$password
 
-Add-content $MSSvrLog "Write parameters updated with in the script $(DomainNB), $(password ), $(credental), $(User),  at the following date/time  $(Get-Date)"
+Add-content $MSSvrLog "Write parameters updated with in the script $($DomainNB), $($password), $($credental), $($User),  at the following date/time  $(Get-Date)"
 
 Import-Module ADDSDeployment
 
@@ -48,10 +48,10 @@ while ($test.PingSucceeded -eq $False)
 Install-ADDSDomainController `
 -NoGlobalCatalog:$True `
 -CreateDnsDelegation:$false `
--Credential: $credental `
+-Credential:$credental `
 -CriticalReplicationOnly:$false `
 -DatabasePath "E:\Data" `
--DomainName "$DomainFQDN" `
+-DomainName:$DomainFQDN `
 -InstallDns:$true `
 -LogPath "E:\Logs" `
 -NoRebootOnCompletion:$false `

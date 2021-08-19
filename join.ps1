@@ -15,7 +15,7 @@ param (
     [String]
     $DomainController
 )
-$MSSvrLog = "C:\temp\MSSvrLog.txt"
+$MSSvrLog = "C:\MSSvrLog.txt"
 
 IF (Test-path $MSSvrLog)
 {Write-host "Log file exits"} 
@@ -27,7 +27,7 @@ else
  
 Add-content $MSSvrLog "Write parameters coming from the script $(DomainPass), $(DomainFQDN), $(DomainUserName), $(DomainController), at the following date/time  $(Get-Date)"
 
-$User = "$($DomainFQDN)\$($DomainUserName))"
+$User = "$($DomainFQDN)\$($DomainUserName)"
 $DomainNB = $DomainFQDN.Split(".")[0]
 $password = ConvertTo-SecureString "$($DomainPass)" -AsPlainText -Force
 $credental = New-Object System.Management.Automation.PSCredential $User,$password

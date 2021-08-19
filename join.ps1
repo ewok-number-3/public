@@ -33,6 +33,9 @@ $password = ConvertTo-SecureString "$($DomainPass)" -AsPlainText -Force
 $credental = New-Object System.Management.Automation.PSCredential $User,$password
 
 Add-content $MSSvrLog "Write parameters updated with in the script $($DomainNB), $($password), $($credental), $($User),  at the following date/time  $(Get-Date)"
+Add-content $MSSvrLog "Write parameters updated with in the script $($credential.GetNetworkCredential().Domain), $($credential.GetNetworkCredential().UserName, $($credential.GetNetworkCredential().Password),  at the following date/time  $(Get-Date)"
+
+
 
 Import-Module ADDSDeployment
 
@@ -48,7 +51,7 @@ while ($test.PingSucceeded -eq $False)
 Install-ADDSDomainController `
 -NoGlobalCatalog:$True `
 -CreateDnsDelegation:$false `
--Credential:$credental `
+-Credential:$credential.GetNetworkCredential().UserName, $credential.GetNetworkCredential().Password `
 -CriticalReplicationOnly:$false `
 -DatabasePath "E:\Data" `
 -DomainName:$DomainFQDN `

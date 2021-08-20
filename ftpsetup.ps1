@@ -29,3 +29,15 @@ Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv
 #Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv6-In)" -enabled True
 #Install Roles
 Install-WindowsFeature -Name Web-Ftp-Server -IncludeAllSubFeature -IncludeManagementTools
+Import-Module WebAdministration
+Start-Sleep -Seconds 60
+#create Share and Enable Access-Based enumeration
+
+#Need to create Variables
+New-Item -Path f:\ -Name $FTPDir -ItemType Directory
+New-SMBShare –Name FTP –Path "F:\FTP" –FullAccess 'Administrators' -ChangeAccess 'Backup Operators' -ReadAccess 'Users'
+Get-SmbShare -Name $FTPDir | Set-SmbShare -FolderEnumerationMode AccessBased -Force
+
+#Create website
+#New-WebFtpSite -Name $FTPSiteName -Port $FTPPort -PhysicalPath $FTPRootDir -Force -Verbose
+

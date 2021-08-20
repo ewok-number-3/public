@@ -44,7 +44,7 @@ do
 }
 while ($test.PingSucceeded -eq $False)
 
-Start-Sleep -Seconds 120
+#Start-Sleep -Seconds 120
 
 #Add-Computer -DomainName $DomainFQDN -Credential $credental -Restart
 

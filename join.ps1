@@ -30,7 +30,7 @@ Add-content $MSSvrLog "Write parameters coming from the script $($DomainPass), $
 $DomainNB = $DomainFQDN.Split(".")[0]
 $User = "$($DomainNB)\$($DomainUserName)"
 $password = ConvertTo-SecureString "$($DomainPass)" -AsPlainText -Force
-$credental = New-Object System.Management.Automation.PSCredential $User,$password
+$credental = New-Object System.Management.Automation.PSCredential ($User,$password)
 
 Add-content $MSSvrLog "Write parameters updated with in the script $($DomainNB), $($password), $($credental), $($User),  at the following date/time  $(Get-Date)"
 Add-content $MSSvrLog "Write parameters updated with in the script $($credental.GetNetworkCredential().Domain), $($credental.GetNetworkCredential().UserName), $($credental.GetNetworkCredential().Password),  at the following date/time  $(Get-Date)"

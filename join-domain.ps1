@@ -1,4 +1,4 @@
-# Windows PowerShell script for AD DS Deployment
+# Windows PowerShell script join machine to domain
 
 [CmdletBinding()]
 param (
@@ -30,6 +30,5 @@ do
 }
 while ($test.PingSucceeded -eq $False)
 
-
-#Add-Computer -DomainName $DomainFQDN -Credential $credental -Restart
+Add-Computer -DomainName $DomainFQDN -Credential $credental -Restart
 

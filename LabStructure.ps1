@@ -15,7 +15,7 @@ $DCRoot = ([ADSI]"").distinguishedName
 $DCUSERDNSDOMAIN = $env:USERDNSDOMAIN
 
 $FTPRoot = "OU=UKHO FTP Accounts,$($DCRoot)"
-$FTPSRoot = "OU=OU=UKHO FTPS Accounts,$($DCRoot)"
+$FTPSRoot = "OU=UKHO FTPS Accounts,$($DCRoot)"
 
 #$WVDRoot = "OU=WVD,$($DCRoot)"
 $password = ConvertTo-SecureString "$($DomainPass)" -AsPlainText -Force

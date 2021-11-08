@@ -1,3 +1,9 @@
+[CmdletBinding()]
+param (
+    [Parameter()]
+    [String]
+    $DomainFQDN,
+)
 
 do
 {
@@ -29,5 +35,13 @@ Get-Disk | Where partitionstyle -eq 'raw' | Initialize-Disk -PartitionStyle MBR 
 Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
 Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv6-In)" -enabled True
 #Install Roles to make Server a Domain Controller
+
+do
+{
+ $test = (Test-NetConnection $DomainFQDN)
+
+}
+while ($test.PingSucceeded -eq $False)
+
 Install-WindowsFeature ad-domain-services -IncludeManagementTools
 Install-windowsfeature -name DNS -IncludeManagementTools

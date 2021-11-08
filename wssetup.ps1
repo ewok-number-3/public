@@ -2,7 +2,7 @@
 param (
     [Parameter()]
     [String]
-    $DomainFQDN,
+    $DomainFQDN
 )
 
 do

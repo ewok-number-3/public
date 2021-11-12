@@ -36,17 +36,19 @@ Add-content $MSSvrLog "Write parameters updated with in the script $($DomainNB),
 Add-content $MSSvrLog "Write parameters updated with in the script $($credental.GetNetworkCredential().Domain), $($credental.GetNetworkCredential().UserName), $($credental.GetNetworkCredential().Password),  at the following date/time  $(Get-Date)"
 
 Import-Module ADDSDeployment
-
+Add-content $MSSvrLog "Write parameters coming from the script Import-Module ADDSDeployment, at the following date/time  $(Get-Date)"
 do
 {
  $test = (Test-NetConnection -ComputerName "$($DomainFQDN)")
 
 }
+Add-content $MSSvrLog "Write parameters coming from the script $($test), at the following date/time  $(Get-Date)"
 while ($test.PingSucceeded -eq $False)
 
-#Start-Sleep -Seconds 120
+Start-Sleep -Seconds 60
 
 #Add-Computer -DomainName $DomainFQDN -Credential $credental -Restart
+Add-content $MSSvrLog "Write parameters coming from the script Install-ADDSDomainController, at the following date/time  $(Get-Date)"
 
 Install-ADDSDomainController `
 -NoGlobalCatalog:$True `
@@ -62,3 +64,5 @@ Install-ADDSDomainController `
 -SysvolPath "E:\SYSVOL" `
 -SafeModeAdministratorPassword:$password `
 -Force:$true
+
+Add-content $MSSvrLog "Write parameters coming from the script Install-ADDSDomainController installed, at the following date/time  $(Get-Date)"
